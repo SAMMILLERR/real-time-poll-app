@@ -342,6 +342,9 @@ A real-time polling application where users can create custom polls, join rooms,
 4. **Access the app**
    Open your browser at: [http://localhost:3000](http://localhost:3000)
 
+5. **DEPLOYED LINK**
+     Live Demo Check out the deployed version:real-time-polling-app-deployed.netlify.app
+
 ---
 
 ## 🧪 Usage
