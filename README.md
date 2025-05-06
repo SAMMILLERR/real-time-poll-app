@@ -46,7 +46,7 @@ A real-time polling application where users can create custom polls, join rooms,
    ```bash
    git clone https://github.com/your-username/real-time-poll-app.git
    cd real-time-poll-app
-````
+   ````
 
 2. **Install dependencies**
 
@@ -148,11 +148,4 @@ real-time-poll-app/
 
 ---
 
-## 📜 License
 
-MIT License © 2025 \[Your Name]
-
-```
-
-Would you like a `README.md` file generated and saved, or added to your project?
-```
