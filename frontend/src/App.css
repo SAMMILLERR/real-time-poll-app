@@ -152,3 +152,16 @@ h2 {
 .join-room-box .button:hover {
   background-color: #0056b3;
 }
+.back-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.back-button:hover {
+  background-color: #d32f2f;
+}

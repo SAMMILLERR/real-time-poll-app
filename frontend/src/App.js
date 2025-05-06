@@ -21,8 +21,10 @@ function App() {
     socketRef.current.onmessage = ({ data }) => {
       const msg = JSON.parse(data);
       if (msg.type === 'room_created' || msg.type === 'room_joined') {
+        console.log('Room joined message:', msg); // Debugging log
         setRoom(msg.room);
         setVotes(msg.votes);
+        setQuestion(msg.question);
         setStatus('joined');
       } else if (msg.type === 'new_vote') {
         setVotes(msg.votes);
@@ -63,7 +65,7 @@ function App() {
     if (!name) return alert('Enter your name.');
     if (!question || options.length < 2) return alert('Enter a question and at least two options.');
     socketRef.current.send(JSON.stringify({ type: 'create', name, question, options }));
-    console.log('Options being sent:', options);
+    console.log('Create Room Data:', { name, question, options }); 
     localStorage.setItem('pollUserName', name);
   };
 
@@ -92,6 +94,17 @@ function App() {
     navigator.clipboard.writeText(room).then(() => {
       alert('Room code copied to clipboard!');
     });
+  };
+
+  const leaveRoom = () => {
+    setRoom('');
+    setQuestion('');
+    setVotes({});
+    setStatus('');
+    setHasVoted(false);
+    setTimeLeft(60);
+    setVotingEnded(false);
+    socketRef.current.send(JSON.stringify({ type: 'leave', room }));
   };
 
   if (status !== 'joined') {
@@ -166,6 +179,7 @@ function App() {
     <div className="container">
       <div className="card">
         <h2>Poll Room: {room}</h2>
+        <button className="button back-button" onClick={leaveRoom}>Back</button>
         {name === rooms[room]?.master && (
           <button className="button" onClick={endPoll}>End Poll</button>
         )}
